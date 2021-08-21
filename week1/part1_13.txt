@@ -1,0 +1,49 @@
+------------------------------------------------------------------------
+
+
+like 연산자 
+
+특정 패턴과 유사한 집합 출력
+
+select * from where column like 패턴
+select * from where column not like 패턴
+
+
+특정 패턴과 유사한 집합
+특정 패턴과 유사하지 않은 집합
+
+특정패턴에서 %는 어떤 문자 혹은 문자열이 매칭 되었다고 판단
+_ 한개의 문자가 어떤 것이든 
+
+------------------------------------------------------------------------
+select * from customer where first_name like 'Jen%';
+
+like 연산자는 
+------------------------------------------------------------------------
+
+FOO like FOO 참
+FOO like F% F로 시작하면 참
+
+FOO like _O_ 3자리 문자열이고 _는 아무거나 한 개 O는 O
+
+BAR like B_는 2자리 문자열이고 B로 시작하기는 했지만, 두번째 문자는 무엇이든 참
+BAR는 B로 시작하지만 3자리라 거짓
+select 'BAR' like 'B__';
+
+
+
+------------------------------------------------------------------------
+
+select first_name ,last_name from customer where first_name like '%er%';
+
+앞뒤 무엇이든 er이 등장
+
+
+------------------------------------------------------------------------
+select first_name ,last_name from customer where first_name like '_her%';
+
+앞에 1개 아무거나 her 등장하고 아무거나
+
+------------------------------------------------------------------------
+
+select first_name ,last_name from customer where first_name not like 'Jen%';

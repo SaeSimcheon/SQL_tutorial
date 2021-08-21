@@ -233,3 +233,102 @@ where
 		rental
 	where
 		cast(return_date as date) = '2005-05-27') ;
+		
+	
+/* Basic 13 */
+	
+select
+	customer_id ,
+	payment_id ,
+	amount
+from
+	payment
+where
+	amount between 8 and 9 ;
+	
+
+select
+	customer_id ,
+	payment_id ,
+	amount
+from
+	payment
+where
+	amount >= 8 
+	and amount <=9 ;
+	
+
+	
+select
+	customer_id ,
+	payment_id ,
+	amount
+from
+	payment
+where
+	amount < 8 or amount >9 ;
+	
+
+
+
+
+select
+	customer_id ,payment_id ,
+	payment_date ,
+	amount,
+	cast(payment_date as date)
+from
+	payment
+where
+	cast(payment_date as date)
+	between '2007-02-07' and '2007-02-15';
+
+
+
+
+select
+	customer_id ,payment_id ,
+	payment_date 
+	amount
+from
+	payment
+where
+	to_char(payment_date,'YYYY-MM-DD')
+	between '2007-02-07' and '2007-02-15';
+
+
+/*Basic 13*/
+
+
+
+select * from customer where first_name like 'Jen%';
+
+
+select 'BAR' like 'B__';
+
+select first_name ,last_name from customer where first_name like '%er%';
+
+
+select first_name ,last_name from customer where first_name like '_her%';
+
+select first_name ,last_name from customer where first_name not like 'Jen%';
+
+
+
+/* Basic 14 */
+
+
+select * from contacts ;
+
+
+select * from contacts where phone is null;
+select * from contacts where phone is not null;
+
+
+
+
+
+
+select from orders
+
+

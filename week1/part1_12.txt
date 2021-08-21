@@ -1,0 +1,113 @@
+------------------------------------------------------------------------
+
+Between 연산자
+
+특정 범위에 들어가는 것을 뽑음
+
+select * from where column_name between value_a and value_b ;
+
+column_name >=value_A and column_name <=value_B
+와 같고
+
+
+select * from tbl1 where column_name not between value_A and value_B ;
+
+
+column_name < value_A OR colmun_name > value_B
+
+not을 between 앞에 붙이는 순간에 그 여집합을 따짐
+
+
+------------------------------------------------------------------------
+	
+select
+	customer_id ,
+	payment_id ,
+	amount
+from
+	payment
+where
+	amount between 8 and 9 ;
+	
+
+select
+	customer_id ,
+	payment_id ,
+	amount
+from
+	payment
+where
+	amount >= 8 
+	and amount <=9 ;
+	
+
+
+
+두 구분의 결과는 같다
+
+직관적으로 between이 보기가 좀 더 편한 것이 잇음
+복잡해지면 가독석이 조금 더 좋은 것을 택하는 것이 좋음
+
+
+------------------------------------------------------------------------
+
+select
+	customer_id ,
+	payment_id ,
+	amount
+from
+	payment
+where
+	amount not between 8 and 9 ;
+	
+	
+앞선 결과의 여집합
+
+위와 동일한 결과를 같는 구문은 아래와 같다
+
+select
+	customer_id ,
+	payment_id ,
+	amount
+from
+	payment
+where
+	amount < 8 or amount >9 ;
+
+
+
+가급적이면 between을 이용하는 것이 좋음
+
+
+------------------------------------------------------------------------
+
+날짜 비교도 손쉽게 할 수 있음
+select
+	customer_id ,payment_id ,
+	payment_date 
+	amount
+from
+	payment
+where
+	cast(payment_date as date)
+	between '2007-02-07' and '2007-02-15';
+
+payment_date가 timestamp 데이터 형으로
+시분초까지 있음
+-> cast를 통해서 date를 고려할 수 있음
+
+select
+	customer_id ,payment_id ,
+	payment_date 
+	amount
+from
+	payment
+where
+	to_char(payment_date,'YYYY-MM-DD')
+	between '2007-02-07' and '2007-02-15';
+
+
+다음의 결과와 동일함
+
+
+------------------------------------------------------------------------
