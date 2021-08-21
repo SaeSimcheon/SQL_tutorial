@@ -1,0 +1,148 @@
+------------------------------------------------------------------------
+~ 안에
+
+select * from tbl1
+
+where column_name in (value1,value2)
+
+-> column_name의 값 중에서 value1 ... sequence 안에 있는지 없는지 판단
+
+
+이런 방식도 가능
+
+subquery
+
+select * from tbl1 
+
+where column_name in (select column_name2 from tbl2)
+
+결국 위 sequence를 직접 값을 열거하는 방법이 있고
+
+select를 통해 만드는 방법이 있음
+
+------------------------------------------------------------------------
+select
+	customer_id ,
+	rental_id ,
+	return_date
+from
+	rental
+where
+	customer_id in (1, 2)
+order by
+	rental_date desc ;
+
+
+in ()
+
+OR condition
+
+select
+	customer_id ,
+	rental_id ,
+	return_date
+from
+	rental
+where
+	customer_id = 1 or 
+	customer_id  = 2
+order by
+	rental_date desc ;
+
+
+
+전자와 후자 같음
+in 으로 표현하는 것이 
+
+가독성면에서 좋고
+DBMS 최적화 하기 옵티마이저의 특성상
+
+in 조건이 유리할 때가 많다
+
+
+
+------------------------------------------------------------------------
+not in 은 in의 반대
+
+1도 아니고 2도 아니게
+
+select
+	customer_id ,
+	rental_id ,
+	return_date
+from
+	rental
+where
+	customer_id not in (1, 2)
+order by
+	rental_date desc ;
+
+
+return_date 내림차순
+
+null이 큰 값으로 처리 됨
+
+
+------------------------------------------------------------------------
+
+
+not in 연산자는 
+
+and 와 <>이 함꼐 사용된 것
+
+select
+	customer_id ,
+	rental_id ,
+	return_date
+from
+	rental
+where
+	customer_id <> 1
+	and customer_id <> 2
+order by
+	rental_date desc ;
+
+
+즉 이런식으로 표현하면 바로 이전 구획의 결과와 같다
+
+
+조건이 좀 더 길어지게 되면 in 과 not in 이 
+
+유리 하게 됨
+
+
+------------------------------------------------------------------------
+
+subquery
+
+
+
+select
+	first_name ,
+	last_name
+from
+	customer
+where
+	customer_id in (
+	select
+		customer_id
+	from
+		rental
+	where
+		cast(return_date as date) = '2005-05-27') ;
+		
+		
+subquery ~ mainquery -> 1개의 sql이 됨
+
+
+cast는 무엇인가?
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+------------------------------------------------------------------------
+
+fetch 절 
+
+-> limit 절과 같은 역할 할 수 있음
+
+행의 수를 한정할 수 있음
+
+
+select * from tbl1 fetch first N row olnly
+출력하는 행의 수를 지정. N 입력 안하고 row only 만 입력하면 단 한 건
+
+select * from tbl1 offset N rows fetch first N row only
+offset을 통해 시작 위치 설정 / 마찬가지로 M+1로 
+
+------------------------------------------------------------------------
+
+select film_id ,title  from film order by title fetch first row only ;
+
+한 건 만 출력함
+
+fetch first row only
+
+ select film_id ,title  from film order by title fetch first 1 row only ;
+ 
+ 1을 쓰나 쓰지 않으나 동일함
+
+------------------------------------------------------------------------
+select
+	film_id ,
+	title
+from
+	film
+order by
+	title 
+	offset 5 rows
+fetch first 4 row only ;
+
+offset 5 rows - > 6부터 시작함
+
+
+fetch는 oracle도 지원함.
+
+
+
+------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------
+
+
+
+
