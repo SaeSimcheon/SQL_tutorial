@@ -1,0 +1,46 @@
+--------------------------------------
+full outer join
+
+left right inner 모두 결과를 출력하는 방식
+
+
+
+
+--------------------------------------
+
+select *
+from basket_a a 
+full outer join
+basket_b b
+on a.fruit = b.fruit ;
+
+
+--------------------------------------
+
+only outer
+
+select *
+from basket_a a 
+full outer join
+basket_b b
+on a.fruit = b.fruit ;
+where a.id is null or b.id is null;
+
+key에 의해 매칭 되지 않는 것만 반환 됨
+
+--------------------------------------
+
+
+if not existx -> postgre sql 문법
+존재하지 않으면 생성
+
+존재하면 생성하지 않음
+
+
+select * from employees e 
+full outer join departments d 
+on d.department_id  = e.department_id 
+where e.employee_id is null or d.department_id is null;
+
+
+

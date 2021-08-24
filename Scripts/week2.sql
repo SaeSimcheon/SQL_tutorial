@@ -131,6 +131,35 @@ on f1.film_id <>f2.film_id
 and f1.length =f2.length ;
 
 /* Basic week2 05 */
+
+select *
+from basket_a a 
+full outer join
+basket_b b
+on a.fruit = b.fruit ;
+
+select *
+from basket_a a 
+full outer join
+basket_b b
+on a.fruit = b.fruit 
+where a.id is null or b.id is null;
+
+
+
+select * from departments ;
+select * from employees ;
+
+select * from employees e 
+full outer join departments d 
+on d.department_id  = e.department_id ;
+
+
+select * from employees e 
+full outer join departments d 
+on d.department_id  = e.department_id 
+where e.department_id is null or d.department_id is null;
+
 /* Basic week2 06 */
 /* Basic week2 07 */
 /* Basic week2 08 */
