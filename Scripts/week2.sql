@@ -84,6 +84,52 @@ where
 	a.id is not null;
 
 /* Basic week2 04 */
+
+select * from employee ;
+
+
+select
+	e.first_name || ' ' || e.last_name manager 
+,
+	m.first_name || ' ' || m.last_name employee
+from
+	employee e
+inner join employee m 
+on
+	m.employee_id = e.manager_id
+order by
+	manager;
+
+select
+	e.first_name || ' ' || e.last_name manager 
+,
+	m.first_name || ' ' || m.last_name employee
+from
+	employee e
+left join employee m 
+on
+	m.employee_id = e.manager_id
+order by
+	manager;
+
+select
+	e.first_name || ' ' || e.last_name manager 
+,
+	m.first_name || ' ' || m.last_name employee
+from
+	employee e
+right join employee m 
+on
+	m.employee_id = e.manager_id
+order by
+	manager;
+
+
+select * from film f1
+inner join film f2
+on f1.film_id <>f2.film_id 
+and f1.length =f2.length ;
+
 /* Basic week2 05 */
 /* Basic week2 06 */
 /* Basic week2 07 */
