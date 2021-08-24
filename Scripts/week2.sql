@@ -177,6 +177,23 @@ select * from cross_t1 ,cross_t2;
 
 
 /* Basic week2 07 */
+
+
+select * 
+from products A
+natural join
+categories B
+
+
+select *
+from products a 
+natural join 
+categories b 
+;
+
+
+select * from products p inner join categories c on p.category_id = c.category_id ;
+
 /* Basic week2 08 */
 /* Basic week2 09 */
 /* Basic week2 10 */

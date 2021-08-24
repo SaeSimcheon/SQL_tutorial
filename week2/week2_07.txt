@@ -1,102 +1,52 @@
-----------------------------------------------------
-self join
-----------------------------------------------------
+-----------------------------------------
 
+natural join 
 
-~
-foreign key (manager_id)
-references employee (employee_id)
-on delete cascade
-
-
-manager_id는 employee_id를 참조한다고 함
-
-보면
-
-employee_id 1의 manager_id가 null이고
-
-차례대로 1122333이 값으로 되어있는데
-
-employee_id가 이에 참조로 매칭된다고함
-
-
-같은 테이블 안에서 참조 관계가 있음
+많이 쓰이지 않음
 
 
 
-----------------------------------------------------
-select
-	e.first_name || ' ' || e.last_name manager 
-,
-	m.first_name || ' ' || m.last_name employee
-from
-	employee e
-inner join employee m 
-on
-	m.employee_id = e.manager_id
-order by
-	manager;
-
-select
-	e.first_name || ' ' || e.last_name manager 
-,
-	m.first_name || ' ' || m.last_name employee
-from
-	employee e
-left join employee m 
-on
-	m.employee_id = e.manager_id
-order by
-	manager;
-
-select
-	e.first_name || ' ' || e.last_name manager 
-,
-	m.first_name || ' ' || m.last_name employee
-from
-	employee e
-right join employee m 
-on
-	m.employee_id = e.manager_id
-order by
-	manager;
-	
+----------------------------------------
 
 
+create table categories
+(
+category_id serial primary key
+,category_name varchar (255) not null
 
-----------------------------------------------------
+);
 
-
-테이블 한 개이어도 
-참조 관계가 존재할 수 있다.
-
-예를 들면 직원 ~ 매니저
-
-
-
-
-부정형 조건
-
-같은 테이블 안에서 row 상호간 매칭 비교가 가능하게 한다.
-
-
-예를들어서
-
-film 테이블 하나를 이용해서
-self join
-서로 다른 영화인 집합을 출력
-영화의 상영시간은 동일하면서
--> 
+create table products
+(
+product_id serial primary key
+, product_name varchar (255) not null
+, category_id int not null
+, foreign key (category_id)
+, references categories (category_id)
+);
 
 
-where로 추출하기 까다롭네
+products table의 foreign key category_id는
+
+categories table의 category_id를
+참조한다.
 
 
+참조 무결성 제약조건
 
-select * from film f1
-where f1.lengh = f1.length
-and f1.film_id <> f1.film_id
+참조 무결성?
 
+
+알아서 자동으로 category_id 기준으로 join
+
+select * 
+from products A
+natural join
+categories B
+
+
+안정성이 중요한데 자동으로 했다가 잘못된 일이 
+발생할 수 있기 때문에 
 
 
 
