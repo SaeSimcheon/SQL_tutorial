@@ -1,0 +1,42 @@
+------------------------------------------------------------------------
+outer join
+
+
+------------------------------------------------------------------------
+
+left join 
+
+select * from basket_a a
+left join basket_b b
+on a.fruit = b.fruit;
+
+left only
+
+select * 
+from basket_a a 
+left join basket_b b
+on a.fruit = b.fruit 
+where b.id is null;
+
+
+------------------------------------------------------------------------
+right join 
+
+select * 
+from basket_a a 
+right join basket_b b
+on a.fruit = b.fruit ;
+
+
+right only
+
+select * 
+from basket_a a 
+right join basket_b b
+on a.fruit = b.fruit 
+where a.id is null;
+
+
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------

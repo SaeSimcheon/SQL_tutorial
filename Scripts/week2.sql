@@ -42,6 +42,47 @@ select * from payment  ;
 select * from staff /* 2Έν*/  
 
 /* Basic week2 03 */
+
+select * 
+from basket_a a 
+left join basket_b b
+on a.fruit = b.fruit ;
+
+select * 
+from basket_a a 
+left join basket_b b
+on a.fruit = b.fruit 
+where b.id is not null;
+
+select
+	*
+from
+	basket_a a
+left join basket_b b
+on
+	a.fruit = b.fruit
+where
+	b.id is null;
+
+
+select
+	*
+from
+	basket_a a
+right join basket_b b
+on
+	a.fruit = b.fruit ;
+
+select
+	*
+from
+	basket_a a
+right join basket_b b
+on
+	a.fruit = b.fruit
+where
+	a.id is not null;
+
 /* Basic week2 04 */
 /* Basic week2 05 */
 /* Basic week2 06 */
