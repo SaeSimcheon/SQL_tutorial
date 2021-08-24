@@ -161,6 +161,21 @@ on d.department_id  = e.department_id
 where e.department_id is null or d.department_id is null;
 
 /* Basic week2 06 */
+
+select * from cross_t1 c1; 
+select * from cross_t1 c2;
+
+
+select *
+from cross_t1 
+cross join 
+cross_t2 ct;
+
+select * from cross_t1 ,cross_t2;
+
+
+
+
 /* Basic week2 07 */
 /* Basic week2 08 */
 /* Basic week2 09 */
