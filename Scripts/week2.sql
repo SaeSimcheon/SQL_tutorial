@@ -305,8 +305,11 @@ select name from sales2007_1 s union select name from sales2007_2 s2 ;
 
 
 /* Basic week2 11 */
+select * from sales2007_1 s union all select * from sales2007_2 s2 ;
 
+select name from sales2007_1 s union all select name from sales2007_2 s2 ;
 
+select * from sales2007_1 s union all select * from sales2007_2 s2 order by amount desc;
 /* Basic week2 12 */
 
 
