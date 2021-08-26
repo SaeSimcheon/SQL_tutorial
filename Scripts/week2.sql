@@ -265,6 +265,27 @@ select p.staff_id ,s.staff_id ,s.first_name ,s.last_name,count(p.customer_id) as
 
 /* Basic week2 09 */
 
+select customer_id ,sum(amount) from payment group by customer_id ; -- group by 후 n 집계
+
+
+select customer_id ,sum(amount) as cnt from payment group by customer_id order by cnt desc;
+
+-- 그룹핑에 의한 table 상태에서 특정 조건에 의한 행만 보고 싶다.
+
+
+select customer_id ,sum(amount) as cnt from payment group by customer_id having sum(amount)  >=200 order by  cnt desc ; -- 이건 됨
+
+select customer_id ,sum(amount) as cnt from payment group by customer_id having cnt  >=200 order by  cnt desc ; -- 이건 안 되네?
+
+select a.customer_id ,b.email ,sum(a.amount) as cnt from payment a,customer b where a.customer_id = b.customer_id group by a.customer_id , b.email order by cnt desc 
+select a.customer_id ,b.email ,sum(a.amount) as cnt from payment a,customer b where a.customer_id =148 and a.customer_id = b.customer_id group by a.customer_id , b.email order by cnt desc -- 이건 안 되네?
+
+select a.customer_id ,b.email ,sum(a.amount) as cnt from payment a,customer b where a.customer_id = b.customer_id group by a.customer_id , b.email having sum(a.amount)  >=200 order by  cnt desc ; -- 이건 안 되네?
+
+
+
+select store_id ,count(customer_id) as cnt from customer group by store_id having count(customer_id) > 300 ;
+
 
 
 /* Basic week2 10 */
