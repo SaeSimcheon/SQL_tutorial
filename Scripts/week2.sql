@@ -313,5 +313,21 @@ select * from sales2007_1 s union all select * from sales2007_2 s2 order by amou
 /* Basic week2 12 */
 
 
+select * from employees ;
+
+select * from keys k ;
+
+select * from hipos h ;
+
+
+
+
+
+select employee_id from keys  intersect select employee_id from hipos ; 
+
+select employee_id from keys  intersect select employee_id from hipos order by employee_id desc;
+
+
+select k.employee_id from keys k inner join hipos h on k.employee_id = h.employee_id
 
 
