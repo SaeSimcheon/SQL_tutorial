@@ -331,3 +331,29 @@ select employee_id from keys  intersect select employee_id from hipos order by e
 select k.employee_id from keys k inner join hipos h on k.employee_id = h.employee_id
 
 
+/* Basic week2 13 */
+
+
+select distinct i.film_id ,f.title from inventory i
+inner join film f on f.film_id =inventory_id order by f.title ;
+
+
+select * from employee ;
+
+select  manager_id ,first_name ,last_name  from employee ;
+select distinct manager_id ,first_name ,last_name  from employee ;
+
+select distinct manager_id   from employee ;
+select store_id,film_id from inventory i ;
+select distinct store_id,film_id from inventory i ;
+select distinct * from inventory i ;
+
+
+
+select * from inventory i ;
+
+
+select film_id , title from film f 
+except select distinct i.film_id ,f2.title from inventory i inner join film f2 on f2.film_id = i.film_id  order by title ;
+select film_id , title from film f except select i.film_id ,f2.title from inventory i inner join film f2 on f2.film_id = i.film_id  order by title ;
+
