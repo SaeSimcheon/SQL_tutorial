@@ -195,7 +195,87 @@ categories b
 select * from products p inner join categories c on p.category_id = c.category_id ;
 
 /* Basic week2 08 */
+
+select * from payment; 
+
+SELECT count(customer_id)  FROM payment ;
+SELECT customer_id,count(customer_id) FROM payment group by customer_id ;
+
+select distinct customer_id from payment  
+
+
+select customer_id ,sum(amount) as A from payment group by customer_id order by A desc;
+
+
+select customer_id ,sum(amount) as A from payment group by customer_id order by 2 desc;
+--이런 방법도 있지만, 열이 추가 되고 제거됨에 따라 문제가 생길 수 있으므로 비선호
+
+select * from customer where customer_id =148;
+
+
+
+select staff_id ,count(staff_id) as cnt from payment group by staff_id ;
+
+select * from staff ;
+
+select * from staff where staff_id =1;
+
+
+select * from payment ;
+
+select * from payment a left join staff s on a.staff_id = s.staff_id ;
+
+
+
+select * from payment p inner join staff s on p.staff_id =s.staff_id ;
+
+select * from payment p,staff s where p.staff_id =s.staff_id ;
+
+select * from employee ,staff ; 
+
+select * from employee cross join staff ; 
+
+select * from employee e;
+
+select *from staff s;
+
+select *from employees e ;
+
+
+select 2 * 8 * 16;
+
+
+select * from employee ,staff ,employees ; 
+
+--cross join = select from tb1,tb2 ...
+-- where 조건 없이 그대로 실행하면 카르테지안 곱의 결과를 나옴
+-- 결국 카르테지안 곱의 결과에 where 조건 중 특정 key 값이 같은 조건을 넣어줘서 equi join을 만듦
+
+select p.staff_id s from payment p , staff s where p.staff_id = s.staff_id group by p.staff_id ,s.staff_id;
+select p.staff_id ,s.staff_id from payment p , staff s where p.staff_id = s.staff_id group by p.staff_id ,s.staff_id;
+select p.staff_id ,s.staff_id ,s.first_name  from payment p , staff s where p.staff_id = s.staff_id group by p.staff_id ,s.staff_id;
+select p.staff_id ,s.staff_id ,s.first_name ,s.last_name from payment p , staff s where p.staff_id = s.staff_id group by p.staff_id ,s.staff_id;
+select p.staff_id ,s.staff_id ,s.first_name ,s.last_name,count(p.customer_id) as cnt from payment p , staff s where p.staff_id = s.staff_id group by p.staff_id ,s.staff_id,s.first_name,s.last_name ;
+
+
+
+
+
+
+
 /* Basic week2 09 */
+
+
+
 /* Basic week2 10 */
+
+
+
 /* Basic week2 11 */
+
+
 /* Basic week2 12 */
+
+
+
+

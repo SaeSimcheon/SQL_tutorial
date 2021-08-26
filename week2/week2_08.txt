@@ -1,0 +1,82 @@
+--------------------------------------------------------------------------------------------
+
+group by
+
+
+
+--------------------------------------------------------------------------------------------
+select c1,집계함수 from tb1 group by c1;
+--------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------
+
+
+select * from payment p inner join staff s on p.staff_id =s.staff_id ;
+
+
+select * from payment p,staff s where p.staff_id =s.staff_id ;
+
+두 개는 같은 결과를 보여줌
+
+
+
+
+inner join on vs where
+
+select * from a
+inner join b
+on a.key = b.key
+and a.key2 = b.key2
+
+
+select * 
+from a, b
+where a.key = b.key
+and a.key2=b.key2
+
+equi join + where
+
+select * from a inner join b
+on a.key = b.key
+where a.key2 = b.key2
+
+
+https://stackoverflow.com/questions/1018822/inner-join-on-vs-where-clause
+
+-> 해당 글에서 쿼리의 논리 순서 참고
+
+
+
+이퀴 조인과 이너조인이 같냐는 말에 대한 대답
+: 같은 결과를 만들 수 있는 것은 맞지만 두 개념이 동일한 것은 아님
+https://stackoverflow.com/questions/5471063/is-inner-join-the-same-as-equi-join
+
+
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+8 select 9 distinct 11 
+
+from 1
+join 3
+on 2
+
+where 4
+
+group by 5
+
+with cube rollup 6
+
+having 7
+
+order by 10
+
+
+
+--------------------------------------------------------------------------------------------
+
+

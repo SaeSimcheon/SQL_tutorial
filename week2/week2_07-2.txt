@@ -1,0 +1,52 @@
+-----------------------------------------
+
+natural join 
+
+많이 쓰이지 않음
+
+
+
+----------------------------------------
+
+
+create table categories
+(
+category_id serial primary key
+,category_name varchar (255) not null
+
+);
+
+create table products
+(
+product_id serial primary key
+, product_name varchar (255) not null
+, category_id int not null
+, foreign key (category_id)
+, references categories (category_id)
+);
+
+
+products table의 foreign key category_id는
+
+categories table의 category_id를
+참조한다.
+
+
+참조 무결성 제약조건
+
+참조 무결성?
+
+
+알아서 자동으로 category_id 기준으로 join
+
+select * 
+from products A
+natural join
+categories B
+
+
+안정성이 중요한데 자동으로 했다가 잘못된 일이 
+발생할 수 있기 때문에 
+
+
+
