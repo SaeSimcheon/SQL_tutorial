@@ -290,6 +290,18 @@ select store_id ,count(customer_id) as cnt from customer group by store_id havin
 
 /* Basic week2 10 */
 
+select * from sales2007_1 s1 ;
+select * from sales2007_2 s2 ;
+
+select * from sales2007_1 s union select * from sales2007_2 s2 ;
+
+select name from sales2007_1 s union select name from sales2007_2 s2 ;
+
+-- 컬럼이름이 같았고, 자료 타입이 같았음
+-- 하나의 select 문으로 도출한 table을 집합으로 생각하고 row를 원소로 생각 
+
+
+
 
 
 /* Basic week2 11 */
