@@ -501,3 +501,112 @@ select film_id ,length from film where length > all(select round(avg(length),2) 
 
 /* Basic week2 17 */
 
+
+select
+	first_name ,
+	last_name
+from
+	customer c
+where
+	exists (
+	select
+		1
+	from
+		payment p
+	where
+		p.customer_id = c.customer_id
+		and p.amount >11
+		)
+order by
+	first_name,
+	last_name;
+	
+
+select * from employee e ; 
+
+select * from employee e where e.employee_id  = e.manager_id ;
+
+select * from employee e,employee a where e.employee_id  = a.manager_id ;
+
+
+
+select 1 from payment p ; -- row °³¼ö¿¡ ¸ÂÃç¼­ ´Ù 1³ª¿È
+select count(*) from payment p ; -- 14596
+select count(*)  from customer c ; -- 599
+
+
+ 
+
+select
+	first_name ,
+	last_name
+from
+	customer c
+where
+	exists (
+	select
+		1
+	from
+		payment p ,customer c2
+	where
+		p.customer_id = c2.customer_id
+		and p.amount >11
+		)
+order by
+	first_name,
+	last_name;
+
+
+
+	select
+		c2.first_name ,c2.last_name 
+	from
+		payment p ,customer c2
+	where
+		p.customer_id = c2.customer_id
+		and p.amount >11
+order by
+	first_name,
+	last_name;
+
+
+select
+	first_name ,
+	last_name
+from
+	customer c
+where
+	exists (
+	select
+		1
+	from
+		payment p
+	where
+		p.customer_id = c.customer_id
+		and p.amount >11
+		)
+order by
+	first_name,
+	last_name;
+
+
+
+
+select
+	first_name ,
+	last_name
+from
+	customer c
+where
+	not exists (
+	select
+		1
+	from
+		payment p
+	where
+		p.customer_id = c.customer_id
+		and p.amount >11
+		)
+order by
+	first_name,
+	last_name;

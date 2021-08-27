@@ -1,0 +1,119 @@
+---------------------------------------------------------------------------------------------------------------
+
+exist 연산자
+
+
+---------------------------------------------------------------------------------------------------------------
+
+select * from employee e where e.employee_id  = e.manager_id ;
+
+
+1 대 1로 매칭해서 비교한다는 것 잊지말기
+
+---------------------------------------------------------------------------------------------------------------
+
+self join
+select * from employee e,employee a where e.employee_id  = a.manager_id ;
+
+
+from tb1,tb2 -> cartesian product 가 먼저 일어나고
+where 가 그 다음으로 일어남 앞선 결과로부터 한 테이블이 되었기 때문에 
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+	select
+		c2.first_name ,c2.last_name 
+	from
+		payment p ,customer c2
+	where
+		p.customer_id = c2.customer_id
+		and p.amount >11
+order by
+	first_name,
+	last_name;
+
+
+select
+	first_name ,
+	last_name
+from
+	customer c
+where
+	exists (
+	select
+		1
+	from
+		payment p
+	where
+		p.customer_id = c.customer_id
+		and p.amount >11
+		)
+order by
+	first_name,
+	last_name;
+	
+	
+이 두구문의 결과는 같다
+
+
+
+
+하지만 
+
+select
+	first_name ,
+	last_name
+from
+	customer c
+where
+	exists (
+	select
+		1
+	from
+		payment p ,customer c2
+	where
+		p.customer_id = c2.customer_id
+		and p.amount >11
+		)
+order by
+	first_name,
+	last_name;
+
+
+이거는 같지 않는데 그 이유는
+
+내부에서 외부 쿼리와 상관 없이 join이 일어났고
+
+고정된 table을 결과로 제공하기 때문에 모든 경우에 대하여 참이 된다.
+
+
+완전히 다른 구문이었다는 것을 알아야
+
+정확한 구조는 파악하지 못했지만,
+
+SQLD 책 본문의 상관 서브커리에 관한 내용으로 미루어 보았을때,
+
+각 row 에 대하여 전부 수행한다고 언급이 되어있고, 외부 구문을 우선으로 수행하고
+
+내부 구문을 반복하여 확인 한다는 점 때문에 다소 느릴 수 있다는 평가가 있다.
+
+https://en.wikipedia.org/wiki/Correlated_subquery
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+exist 구문은 1개만 매칭 되면 연산을 종료하므로 효율적이라고 함.
+
+---------------------------------------------------------------------------------------------------------------
+
+
+Not exists -> 아예 없는지 확인하는 연산자로 exists와 마찬가지로 하나라도 찾아지면 즉, 집합이 존재하면 수행이 종료 되는데
+exists 와 반대로 반환할 결과에서 제외됨.
+
+
+exists 와 not exists은 서로 여집합 관계
