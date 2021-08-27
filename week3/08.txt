@@ -1,0 +1,46 @@
+------------------------------------------------------------------------
+lag
+이전 행의 값을 찾는다
+
+
+------------------------------------------------------------------------
+select
+	p.proudct_name ,
+	pg.group_name ,
+	p.price ,
+	lag(p.price,1) over(partition by pg.group_name order by p.price) as lagged, 
+	p.price - lag(p.price,1) over(partition by pg.group_name order by p.price) as lagged
+from
+	product p
+inner join product_group pg 
+on
+	p.group_id = pg.group_id
+	
+
+lag(.,1) -> 1개 이전
+
+select구문 안에서 alias 후에 하단에서 로 바로 못 부르나?
+
+------------------------------------------------------------------------
+
+lag 가 이전이면
+
+lead는 이후에서 찾는다
+
+select
+	p.proudct_name ,
+	pg.group_name ,
+	p.price ,
+	lead(p.price,1) over(partition by pg.group_name order by p.price) as lagged, 
+	p.price - lead(p.price,1) over(partition by pg.group_name order by p.price) as lagged
+from
+	product p
+inner join product_group pg 
+on
+	p.group_id = pg.group_id
+
+------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------

@@ -1,15 +1,13 @@
 ------------------------------------------------------------------------
 
-inner join
 
-특정 컬럼에 매칭 되는 
-
-select ~ from t1 inner join t2 on t1. = t2.
-
-key에 의해 상호 매칭되는 경우를 추출
+select count(*) from product p;
+-> 전체 내용은 안 보여줌
 
 
-정규화된 테이블들을 가지고 새로운 정보를 만들기 위해서
+select count(*) over(),p.* from  product p
 
-select 선택 정보를 선택
+over(),tb.*
+
+이렇게 하면 전체 건수를 포함해서 보여줌
 

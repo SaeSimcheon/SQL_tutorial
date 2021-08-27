@@ -1,15 +1,48 @@
 ------------------------------------------------------------------------
 
-inner join
 
-특정 컬럼에 매칭 되는 
+select c1,분석함수(c2,c3,..) over(partition by c4 
+								order by c5)
+								from table
+								
+over 부분은 하나도 모르겠네
 
-select ~ from t1 inner join t2 on t1. = t2.
 
-key에 의해 상호 매칭되는 경우를 추출
+select avg(price) from product ; 
 
 
-정규화된 테이블들을 가지고 새로운 정보를 만들기 위해서
+select B.group_name,avg(price)  from product A inner join product_group B
+on( A.group_id = B.group_id) group by B.group_name;
 
-select 선택 정보를 선택
+select A.proudct_name ,A.price ,B.group_name,avg(A.price) over (partition by B.group_name)  from product A inner join product_group B
+on( A.group_id = B.group_id) ;
 
+
+
+분석함수를 사용하여 결과집합을 그대로 출력하면서 
+group_name 기준의 평균을 출력
+
+
+group by
+
+
+------------------------------------------------------------------------
+
+
+누적 집계됨
+
+각 partition 별로 첫번째 원소부터
+마지막 원소까지 순서대로 포함시키며 평균 값을 기재
+
+
+select
+	A.proudct_name ,
+	A.price ,
+	B.group_name,
+	avg(A.price) over (partition by B.group_name
+	order by A.price)
+from
+	product A
+inner join product_group B
+on
+	( A.group_id = B.group_id) ;

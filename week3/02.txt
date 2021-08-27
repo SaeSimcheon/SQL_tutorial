@@ -1,15 +1,45 @@
 ------------------------------------------------------------------------
+roll up 
 
-inner join
+------------------------------------------------------------------------
 
-특정 컬럼에 매칭 되는 
+select c1,c2,c3 , 집계함수(c4)
+from tb1
+group by 
+rollup (c1,c2,c3) ;
 
-select ~ from t1 inner join t2 on t1. = t2.
+이런 방식도 가능
 
-key에 의해 상호 매칭되는 경우를 추출
+select c1,c2,c3 , 집계함수(c4)
+from tb1
+group by c1 
+rollup (c2,c3) ;
+
+특정 컬럼은 제외한 부분적인 roll up도 가능하다
 
 
-정규화된 테이블들을 가지고 새로운 정보를 만들기 위해서
 
-select 선택 정보를 선택
+select brand , segment , sum(quantity) from sales group by segment, rollup (brand) order by brand ,segment ;
 
+
+
+Rollup(a,b,c)
+-> grouping sets((a,b,c),(a,b),(a),())
+
+가장 앞의 column으로부터 하나씩 차례로 추가해준다 num_col +1개 만큼 경우의 수가 나옴
+
+
+부분집합에 반드시 포함 되어야하는 원소가 된다.
+
+ABC	Basic	200
+ABC	Premium	100
+XYZ	Basic	300
+XYZ	Premium	100
+	Basic	500
+	Premium	200
+	
+	rollup에 의한 조합에 group by로 고정한 column이 추가되어
+	총 합계는 빠진 모습
+	
+
+	

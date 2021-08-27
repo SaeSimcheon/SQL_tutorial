@@ -1,0 +1,54 @@
+------------------------------------------------------------------------
+
+각 그룹별 첫번째 값을 추출
+------------------------------------------------------------------------
+
+
+
+select
+	p.proudct_name,
+	pg.group_name,
+	p.price ,
+	first_value (p.price) over( partition by pg.group_name order by p.price )
+from
+	product p
+inner join product_group pg on
+	(p.group_id = pg.group_id);
+
+
+이런 식으로 들어가면 
+
+각 파티션에 의한 그룹 별로 first_value라는 column 안에
+
+추출된 값이 중복해서 들어감
+
+------------------------------------------------------------------------
+
+select
+	p.proudct_name,
+	pg.group_name,
+	p.price ,
+	last_value (p.price) over( partition by pg.group_name
+order by
+	p.price 
+	range between unbounded preceding and unbounded following)
+from
+	product p
+inner join product_group pg on
+	(p.group_id = pg.group_id);
+
+
+last_value는 이렇게 range에 대한 구문을 추가로 더 해줘야 한다는데
+
+
+default가 range between unbounded preceding and current row 라서
+
+그렇다고 함
+
+------------------------------------------------------------------------
+
+
+
+
+------------------------------------------------------------------------
+

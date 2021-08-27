@@ -1,0 +1,24 @@
+------------------------------------------------------------------------
+with 엄청 중요
+
+------------------------------------------------------------------------
+
+
+with <NAME> as ()
+
+로 설정한 아래 구문부터 <NAME> 을 테이블로 처리
+
+
+
+with tmp1 as (
+select film_id ,title ,(case when length < 30 then 'short'
+when length < 30 then 'short'
+when length >= 30 and length <90 then 'medium'
+when length > 90 then 'long'
+end  
+) length
+from film f )
+select * from tmp1 a where a.length = 'long';
+
+
+한 테이블처럼 핸들링 가능
