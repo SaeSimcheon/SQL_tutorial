@@ -357,3 +357,135 @@ select film_id , title from film f
 except select distinct i.film_id ,f2.title from inventory i inner join film f2 on f2.film_id = i.film_id  order by title ;
 select film_id , title from film f except select i.film_id ,f2.title from inventory i inner join film f2 on f2.film_id = i.film_id  order by title ;
 
+
+
+
+/* Basic week2 14 */
+
+
+select avg(rental_rate) from film f ;
+
+-- 이 방식을 중첩 서브쿼리라고 하네
+
+select film_id ,title,rental_rate from film f where rental_rate  > 2.98; --(a)
+
+
+select avg(rental_rate) from film f ; -- 한개의 스칼라 값이 나옴
+
+select film_id ,title,rental_rate from film f where rental_rate  > (select avg(rental_rate) from film f);
+
+-- 위 구문은 (a) 구문과 동일한 결과를 보여준다 
+
+
+-- 인라인 뷰 ~ 라인 안에 들어갔다.
+
+
+--where 절이 아니라 from 절 안에 들어가 있다
+
+-- 먼저 카르테지안 프로덕트 이후에 where 절을 통해서 filtering이 이루어진다
+
+-- 이때 두번째 테이블이 서브쿼리에 의한 것인데, 스칼라이므로 avg라는 컬럼이 2.98 값으로 추가된 격이 된다.
+
+
+select f.film_id ,f.title ,f.rental_rate,f2.avg from film f ,(select avg(rental_rate) as avg from film ) f2  
+
+where f.rental_rate > f2.avg ;
+
+
+select f.film_id ,f.title ,f.rental_rate from film f ,(select avg(rental_rate) as avg from film ) f2  where f.rental_rate > f2.avg ;
+
+
+
+-- 스칼라 서브쿼리
+
+select *
+from
+	(
+	select
+		f2.film_id ,
+		f2.title ,
+		f2.rental_rate ,
+		(
+		select
+			avg(f.rental_rate)
+		from
+			film f) as avg
+	from
+		film f2 ) A
+		where A.rental_rate > A.avg;
+		
+-- 메인 -> 인라인 뷰 -> 스칼라 서브쿼리 총 3개 계층으로 되어 있음
+
+	
+	
+select
+		avg(f.rental_rate),avg(f.rental_rate)
+	from
+		film f ;
+
+
+select
+	f2.film_id ,
+	f2.title ,
+	f2.rental_rate ,
+	(
+	select
+		avg( f.rental_rate)
+	from
+		film f) as avg
+from
+	film f2;
+
+
+
+
+select
+	f2.film_id ,
+	f2.title ,
+	f2.rental_rate ,
+	(
+	select
+		 f.rental_rate
+	from
+		film f ) as avg
+from
+	film f2;
+
+select
+	f2.film_id ,
+	f2.title ,
+	f2.rental_rate ,
+	(
+	select
+		 f.film_id ,f.rental_rate
+	from
+		film f where film_id = 1) as avg
+from
+	film f2;
+
+
+	select
+		f.film_id ,f.rental_rate
+	from
+		film f where f.film_id =1;
+
+
+select
+	f2.film_id ,
+	f2.title ,
+	f2.rental_rate ,
+	(
+	select
+		 f.rental_rate
+	from
+		film f where film_id = 1) as avg
+from
+	film f2;
+	
+	
+/* Basic week2 15 */
+
+
+/* Basic week2 16 */
+/* Basic week2 17 */
+
