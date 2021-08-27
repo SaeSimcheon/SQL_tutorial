@@ -485,6 +485,15 @@ from
 	
 /* Basic week2 15 */
 
+select f.title , f.length from film f where f.length >=any(
+select max(f2.length) from film f2,film_category fc
+where f2.film_id = fc.film_id group by fc.category_id);
+
+
+select f.title , f.length from film f where f.length =any(
+select max(f2.length) from film f2,film_category fc
+where f2.film_id = fc.film_id group by fc.category_id);
+
 
 /* Basic week2 16 */
 /* Basic week2 17 */
