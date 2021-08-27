@@ -496,5 +496,8 @@ where f2.film_id = fc.film_id group by fc.category_id);
 
 
 /* Basic week2 16 */
+select film_id ,length from film where length > all(select round(avg(length),2) from film f group by rating) ; 
+
+
 /* Basic week2 17 */
 
