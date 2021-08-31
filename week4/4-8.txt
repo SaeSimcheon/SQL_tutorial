@@ -1,0 +1,41 @@
+top n
+
+일정한 순서로부터 일정 개수나 비율로
+데이터를 잘라냄
+
+
+오라클에서는 pseudo column 사용
+
+select ename,sal from emp
+where rownum <4
+order by sal desc;
+
+where 이 먼저 적용 되는 바람에 
+
+원하는 결과 도출 불가능
+
+-> 해결책으로 인라안 뷰를 사용해야함
+
+
+sql server는 top 절 사용
+
+-> select 바로 다음에 씀
+
+select top(2) from 이런식으로
+
+percent 추가하면 expression %
+with ties
+
+마지막 등수에 복수명이 있으면 뽑음
+
+--------------------------------
+
+row limiting 절
+
+offset N -> 건너 뜀
+
+fetch 반환할 행의 개수 또는 백분율 지정
+only 지정된 행의 개수나 백분율만큼만 행 반환
+
+with ties 마지막 행에 대한 동순위 포함해서 반환
+

@@ -1,0 +1,46 @@
+DCL 
+유저를 생성하고 권한을 제어할 수 있는 명령어
+데이터의 보호와 보안을 위해서 유저와 권한을 관히해야함
+
+create user sqld_test idntifited by
+
+grant create session to sqld_test
+-> 얘는 여기까지 하면 테이블 만드는 권한이 없음
+
+
+grant create table to sqld_test ;
+-> 이러면 테이블 만들 권한까지 줌
+
+
+grant select on sqld.tb_emp to sqld_test;
+
+이러면 테이블 select 권한 줌
+
+grant insert,delect update on to
+
+
+revoke create table from sqld_test ;
+
+이거 하면 create 권한 회수함
+
+
+
+
+일일이 이렇게 부여하는게 까다로움
+
+
+role로 손쉽게 권한 부여 가능
+
+
+----------------------------------------
+
+create role create_session_table;
+grant create session, create table to create_session_table;
+grant create_session_table to sqld_test;
+
+
+----------------------------------------
+
+
+create user sqld_test identified by 1234;
+grant connect, resource to sqld_test;
