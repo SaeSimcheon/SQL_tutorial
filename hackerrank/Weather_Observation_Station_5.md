@@ -88,3 +88,14 @@ union
 ```
 
 
+[scalar subquery라고 하던가 ? subquery로 값을 만든 다음에 where 문제서 추출하되, union등 따로 처리하진 않았음. ](https://www.hackerrank.com/rest/contests/master/challenges/weather-observation-station-5/hackers/vinaykumar545/download_solution)
+
+
+[union all 한 것도 다시 테이블로 삼을 수 있다.](https://www.hackerrank.com/rest/contests/master/challenges/weather-observation-station-5/hackers/iliyav/download_solution)
+
+
+[구문 순서는 아마 order by가 가장 마지막](https://www.hackerrank.com/rest/contests/master/challenges/weather-observation-station-5/hackers/itepsilon/download_solution)
+
+[subquery를 통해서 min max를 갖는 도시를 찾아서 in을 통해 다시 찾았음.](https://www.hackerrank.com/rest/contests/master/challenges/weather-observation-station-5/hackers/himanshu123/download_solution)
+
+[굳이 union을 하지 않고 출력해도 답이 되는 것 같다.](https://www.hackerrank.com/rest/contests/master/challenges/weather-observation-station-5/hackers/dustyplant/download_solution)
