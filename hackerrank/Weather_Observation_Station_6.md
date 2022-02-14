@@ -27,21 +27,21 @@
 ```
 
 # 첫번째 시도(통과)
-
+```
  select distinct S.city from station S where substr(S.city,1,1) in ('a','e','i','o','u'); 
- 
+```
  
  # 두번째 시도(통과) <- 
- 
+``` 
  select distinct city from station where city regexp '^[AEIOU]'; 
- 
+```
  
  
  # 다름 사람 들은 어떻게 풀었을까 ?
- 
+```
  select distinct CITY from STATION where CITY RLIKE '^[AEIOU]' (정규 표현식)
  SELECT CITY FROM STATION WHERE CITY REGEXP '^[AEIOU]' (정규표현식)
  select city from station where city like 'A%' or city like 'E%' or city like 'I%' or city like 'O%' or city like 'U%' order by city;
  (번거롭긴하지만 위와 like를 통해서 위와 같은 방식도 가능함.)
- 
+```
  
