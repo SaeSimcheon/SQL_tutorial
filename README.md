@@ -20,3 +20,15 @@ Weather_Observation_Station_7
 Weather_Observation_Station_8
 Weather_Observation_Station_9
 ```
+
+
+### Programmers
+
+### Zero-base problems
+
+
+
+
+
+
+[ref](https://www.complexsql.com/wp-content/uploads/2018/06/SQL-Interview-Book.pdf)
