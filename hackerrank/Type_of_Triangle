@@ -1,0 +1,63 @@
+# 첫번째 접근
+
+- case when then 구문을 중첩해서 접근하려고 했음.
+- 여러 컬럼의 값을 동시에 비교하는 함수가 안 떠오름.
+- 여러 컬럼의 값 중에서 두 번째, 세 번째를 추출하는 함수가 기억이 안 남.
+/*
+lenth equal condition -> one by one comparision -> is there any specific function
+
+- Check case when then end
+
+- it's tricky -> make it legacy 
+
+- not a triangle -> I have to choice second and third side through comparison. -> check the function for it.
+
+- find a function to check the sameness of values over several columns.
+
+
+-> it's incorrect
+
+# How to find the second largest value across multiple columns and third
+# Multiple case when then end
+# How to chekc check the sameness of values over several columns.
+*/
+
+
+# 첫번째 시도
+
+select case when (A+B > C) or (C+A > B) or (B+C > A) then 'Not A Trianlge' 
+else (
+    case when (A = B) then (case when B = C then 'Equilateral'
+                            else 'Isosceles' 
+                           end)
+    else (
+        case when (B=C) then 'Isosceles'
+        else 'Scalene'
+        end
+    )
+) end from TRIANGLES;
+
+
+# 두번째 접근
+
+- subquery를 통해서 길이 비교를 한 binary column을 여러개(3개) 만들어서 그 합이 3 이면 세변이 모두 같은 것이고, 1이면 두 변만 같은 것. 하나도 같지 않으면 0
+- 셋 중에서 작은 두 변의 합은 어떻게 구할까 ?
+- 가장 긴변 > 나머지변의 합 -> 이
+
+
+# 두번째 시도 (미완성)
+
+select * , 
+case when S.col1+S.col2+S.col3 =3 then 'Equilateral'
+when S.col1+S.col2+S.col3 =1 then 'Isosceles'
+else 'Scalene'
+end
+from(
+select *,
+case when A = B then 1 else 0 end as col1,
+case when B = C then 1 else 0 end as col2,
+case when C = B then 1 else 0 end as col3
+from triangles) S
+
+
+
