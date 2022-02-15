@@ -23,7 +23,7 @@ Weather_Observation_Station_9
 
 legacy 
   - Weather_Observation_Station_11
-  - Weather_Observation_Station_8
+  - Weather_Observation_Station_6
   - Employee_Salaries
 ```
 
