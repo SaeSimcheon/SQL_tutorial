@@ -14,3 +14,16 @@ who have been employees for less than 10 months.
 ```sql
 select name from employee E where E.salary > 2000 and E.months < 10 order by E.employee_id asc;
 ```
+
+
+
+# D+1
+
+/*
+a list of names having a salary > 2000 per month / < 10 months 
+order by employee_id
+
+*/
+
+
+select name from employee where salary > 2000 and months < 10 order by employee_id
