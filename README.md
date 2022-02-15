@@ -25,6 +25,15 @@ legacy
   - Weather_Observation_Station_11
   - Weather_Observation_Station_6
   - Employee_Salaries
+
+
+```
+#### 2022/02/14
+```
+Type_of_Triangle
+
+legacy
+  - Type_of_Triangle
 ```
 
 
