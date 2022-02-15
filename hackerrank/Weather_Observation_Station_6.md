@@ -45,3 +45,13 @@
  (번거롭긴하지만 위와 like를 통해서 위와 같은 방식도 가능함.)
 ```
  
+
+
+# D+1
+/*
+city starting with vowels -> regexp
+no duplicates -> distinct
+*/
+
+select city from station where city regexp '^[aeiou]'
+
