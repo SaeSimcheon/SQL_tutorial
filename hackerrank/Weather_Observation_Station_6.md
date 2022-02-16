@@ -52,6 +52,13 @@
 city starting with vowels -> regexp
 no duplicates -> distinct
 */
-
+```sql
 select city from station where city regexp '^[aeiou]'
+```
 
+
+# D+2
+
+```sql
+select city  from station where city regexp '^[aeiou]'
+```
