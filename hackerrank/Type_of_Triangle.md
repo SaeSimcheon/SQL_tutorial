@@ -104,7 +104,7 @@ case when A = C then True else False end as col3 from triangles) S
 - 이외에는 else
 - 보면서 든 생각은 case when then에서 조건이 맞는 순서로 이탈하나 ? 라는 생각이 들었음. -> 그런데 애초에 모든 조건문이 그렇지 않나 ?
 - 생각해보니 내가 잘 못 짠 것 같음 이전에
-
+```
 select
 CASE 
 when A + B <= C OR A + C <= B OR B + C <= A THEN "Not A Triangle"
@@ -113,21 +113,21 @@ when A = B OR B = C or A=C then "Isosceles"
 else "Scalene" 
 
 end from Triangles;
-
+```
 
 ## 2. sql에도 한줄 if 구문을 사용한다. if (조건,참일때, 거짓일때)
 - 여러 겹으로 사용했음.
 - Not A Triangle 조건은 나랑 똑같이 짰음.
-
+```
 select 
 if(A+B+C <= 2*greatest(A,B,C),"Not A Triangle",
 if(A=B and B=C,"Equilateral",
 if(A=B or B=C or C=A,"Isosceles","Scalene")))
 from Triangles;
-
+```
 
 ## 3. <>가 뭘까 ? -> legacy [not equal의 의미이다.](https://stackoverflow.com/questions/39075213/what-is-the-meaning-of-in-mysql-query/39075250)
-
+```
 select
     (
     CASE 
@@ -137,3 +137,4 @@ select
         ELSE 'Scalene'
     END) AS total
  from TRiangles;
+```
