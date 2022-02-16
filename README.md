@@ -34,6 +34,8 @@ Type_of_Triangle
 
 legacy
   - Type_of_Triangle
+    - True False SQL
+  
 ```
 
 
