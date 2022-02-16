@@ -72,7 +72,7 @@ from triangles) S
 
 ## SQL에서 True False 덧셈이 되는지 모르겠음. -> legacy -> 됨.
 ```sql
-select True + True from triangles
+/*select True + True from triangles*/
 select True + True;
 ```
 
