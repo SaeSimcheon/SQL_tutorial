@@ -61,3 +61,27 @@ from triangles) S
 
 
 
+# D+1
+```
+첫번째날 두번째 접근을 완성시켜서 성공함
+굳이 세 개 중 크기가 작은 순으로 두개를 고르거나, 가장 큰 것을 제외하는 생각 필요 없이 부등식 양변에 더해졌다고 생각하면 아래와 같음.
+- S.A+S.B+S.C <= 2 * greatest(S.A,S.B,S.C)
+
+그런데 case when then 조건문 세울때 유의할 필요가 있을 것 같음. 겹으로 case when then 이 안 되나 ? 그렇게 해도 복잡하긴 함
+```
+
+## SQL에서 True False 덧셈이 되는지 모르겠음. -> legacy
+
+
+```sql
+select case when col1+col2+col3 = 3 and S.A+S.B+S.C > 2 * greatest(S.A,S.B,S.C) then "Equilateral"
+when col1+col2+col3 = 1 and S.A+S.B+S.C > 2 * greatest(S.A,S.B,S.C) then "Isosceles" 
+when col1+col2+col3 = 0 and S.A+S.B+S.C > 2 * greatest(S.A,S.B,S.C) then "Scalene" 
+when S.A+S.B+S.C <= 2 * greatest(S.A,S.B,S.C) then "Not A Triangle" 
+end
+from(select *,case when A = B then True else False end as col1,
+case when B = C then True else False end as col2,
+case when A = C then True else False end as col3 from triangles) S
+```
+
+
