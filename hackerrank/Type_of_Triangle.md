@@ -127,7 +127,7 @@ from Triangles;
 ```
 
 ## 3. <>가 뭘까 ? -> legacy [not equal의 의미이다.](https://stackoverflow.com/questions/39075213/what-is-the-meaning-of-in-mysql-query/39075250)
-```
+```sql
 select
     (
     CASE 
