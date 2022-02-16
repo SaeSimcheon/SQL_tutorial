@@ -24,7 +24,7 @@ lenth equal condition -> one by one comparision -> is there any specific functio
 
 
 # 첫번째 시도
-
+```sql
 select case when (A+B > C) or (C+A > B) or (B+C > A) then 'Not A Trianlge' 
 else (
     case when (A = B) then (case when B = C then 'Equilateral'
@@ -36,7 +36,7 @@ else (
         end
     )
 ) end from TRIANGLES;
-
+```
 
 # 두번째 접근
 
@@ -46,7 +46,7 @@ else (
 
 
 # 두번째 시도 (미완성)
-
+```sql
 select * , 
 case when S.col1+S.col2+S.col3 =3 then 'Equilateral'
 when S.col1+S.col2+S.col3 =1 then 'Isosceles'
@@ -58,7 +58,7 @@ case when A = B then 1 else 0 end as col1,
 case when B = C then 1 else 0 end as col2,
 case when C = B then 1 else 0 end as col3
 from triangles) S
-
+```
 
 
 # D+1
