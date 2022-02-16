@@ -93,3 +93,47 @@ case when A = C then True else False end as col3 from triangles) S
 ```
 
 
+
+
+# 다른 사람들은 어떻게 풀었을까 ?
+
+## 1. case when then으로 깔끔하게 풀 수 있음.
+- not a triangle 조건은 적어도 하나만 만족하면 되니까 부등식 3개로 or로 엮어서 사용하면 됨
+- Equilateral은 셋다 같으므로 A = B and B = C로 짜면 됨
+- 적어도 한 쌍만 같으면 되므로 , Isosceles도 두 개씩 잡고 or로 엮어서 사용하면 됨.
+- 이외에는 else
+- 보면서 든 생각은 case when then에서 조건이 맞는 순서로 이탈하나 ? 라는 생각이 들었음. -> 그런데 애초에 모든 조건문이 그렇지 않나 ?
+- 생각해보니 내가 잘 못 짠 것 같음 이전에
+
+select
+CASE 
+when A + B <= C OR A + C <= B OR B + C <= A THEN "Not A Triangle"
+when A = B AND B=C THEN "Equilateral" 
+when A = B OR B = C or A=C then "Isosceles"
+else "Scalene" 
+
+end from Triangles;
+
+
+## 2. sql에도 한줄 if 구문을 사용한다. if (조건,참일때, 거짓일때)
+- 여러 겹으로 사용했음.
+- Not A Triangle 조건은 나랑 똑같이 짰음.
+
+select 
+if(A+B+C <= 2*greatest(A,B,C),"Not A Triangle",
+if(A=B and B=C,"Equilateral",
+if(A=B or B=C or C=A,"Isosceles","Scalene")))
+from Triangles;
+
+
+## 3. <>가 뭘까 ? -> legacy [not equal의 의미이다.](https://stackoverflow.com/questions/39075213/what-is-the-meaning-of-in-mysql-query/39075250)
+
+select
+    (
+    CASE 
+        WHEN A+B<=C OR A+C<=B OR B+C<=A THEN 'Not A Triangle'
+        WHEN A=C AND A <> B OR A=B AND A<>C OR C=B AND A<>C THEN 'Isosceles'
+        WHEN A=B AND B=C THEN 'Equilateral'
+        ELSE 'Scalene'
+    END) AS total
+ from TRiangles;
