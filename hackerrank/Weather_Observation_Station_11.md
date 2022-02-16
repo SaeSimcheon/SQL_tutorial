@@ -9,3 +9,10 @@
 ```sql
 select distinct city from station where city regexp '^[^aeiou]' or city regexp '[^aeiou]$'
 ```
+
+
+# D+1
+select distinct city from station where city regexp '^[^aeiou]' or city regexp '[^aeiou]$'
+
+# D+2
+select distinct city from station where city regexp '^[^aeiou]' or city regexp '[^aeiou]$'
