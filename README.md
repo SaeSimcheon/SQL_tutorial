@@ -51,7 +51,7 @@ Occupations
 ```
 legacy
   - New Companies
-    - multiple join
+    - multiple join -> make example
   - Occupations(try again)
 ```
 
