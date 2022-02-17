@@ -63,3 +63,21 @@ select concat("There are total ", cast(count(*) as char), " ", lower(occupation)
 select concat(Name, '(', substring(Occupation from 1 for 1), ')') from Occupations order by Name;
 select concat('There are total ', count(*), ' ', lcase(Occupation), 's.') from Occupations group By Occupation order by Count(*);
 ```
+
+
+# D+1
+- lcase 사용해서 lower 대체, left를 통해 substr 
+```
+/*
+Two queries
+- alphabetically ordered list of names : name(Capital of occupation) 
+- order by count(name) in a group. write sentences in the following form :
+There are a total of [count] [occupation]s. -> group by and count
+*/
+```
+
+```sql
+select concat(name,'(',left(occupation,1),')') from occupations order by name;
+
+select concat('There are a total of ',count(name),' ',lcase(occupation),'s.') from occupations group by occupation order by count(name);
+```
