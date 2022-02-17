@@ -35,7 +35,6 @@ Type_of_Triangle
 legacy
   - Type_of_Triangle
     - True False SQL
-  
 ```
 #### 2022/02/16
 ```
@@ -43,7 +42,6 @@ The PADS
 
 legacy
   - The PADS
-  
 ```
 #### 2022/02/17
 ```
@@ -53,7 +51,8 @@ Occupations
 ```
 legacy
   - New Companies
-  - Occupations 
+    - multiple join
+  - Occupations(try again)
 ```
 
 
