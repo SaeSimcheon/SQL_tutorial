@@ -138,3 +138,19 @@ select
     END) AS total
  from TRiangles;
 ```
+
+
+# D+2
+
+- 이전에 찾은 부등식을 greatest를 이용해서 사용
+- case when then은 하나의 큰 조건문이다.
+
+```sql
+
+select case when A + B + C <= 2*greatest(A,B,C) then 'Not A Triangle'
+when A = B and B = C then 'Equilateral'
+when A = B or B = C or C = A then 'Isosceles'
+else 'Scalene'
+end
+from triangles
+```
