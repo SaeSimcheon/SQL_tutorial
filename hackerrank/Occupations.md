@@ -46,4 +46,20 @@ Priya Priyanka Kristeen Samantha
 ```
 
 
-()
+
+
+## 최종 답안
+
+- 5월까지 풀었던 것 중에서 가장 오래 걸렸음.
+- 가급적이면 찾아보지 않으려 했는데 좋은 방법이 떠오르지 않았음.
+- sql reshaping에 포커스를 두고 찾아보았는데 그 중에서 row_number를 생성하여 그것을 기준으로 그룹을 형성하는 방법에 대해서 떠올림.
+  - 여기서 다시 각 row num 별로 직업에 맞게 column을 생성하기 위해 아래와 같이 max(case when then end)를 사용하는 방법을 적용.
+
+
+```sql
+select max(case when a.occupation = 'Doctor' then name end),
+max(case when a.occupation = 'Professor' then name end),
+max(case when a.occupation = 'Singer' then name end),
+max(case when a.occupation = 'Actor' then name end)
+from (select name,occupation,row_number() over(partition by occupation order by name) as r_num from occupations) a group by a.r_num
+```
