@@ -1,4 +1,11 @@
 ```
+with recursive 구문을 이용해서 시작일을 기준으로 한 그룹을 형성하였음
+초기를 table로 설정할 수 있음.
+end_date에 start_date가 있는지만 확인해서 시작일인지 여부를 확인할 수 있음.
+반복하여 table을 추출해 union 하는데 start_date와 end_date가 같은 경우를 순서대로 추가함.
+이때 depth 하는 변수를 두어 시작일일때 0에서 1씩 늘려 한 프로젝트에서의 연속일수를 반영.
+```
+```
 WITH   recursive q AS 
         (
         SELECT  start_date,end_date,0 as depth
